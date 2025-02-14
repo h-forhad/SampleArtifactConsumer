@@ -17,6 +17,10 @@ dependencyResolutionManagement {
   repositories {
     google()
     mavenCentral()
+
+    maven {
+      url = uri("/Volumes/Motorola Projects/MDC/POC/LocalArtifacts/local-repo")
+    }
   }
 }
 

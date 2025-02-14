@@ -47,6 +47,10 @@ dependencies {
   implementation(libs.androidx.ui.tooling.preview)
   implementation(libs.androidx.material3)
 
+  implementation("com.local.pscore:core:0.0.1")
+  implementation("com.local.pscore:tasks:0.0.2")
+  implementation("com.local.pscore:search:0.0.1")
+
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
