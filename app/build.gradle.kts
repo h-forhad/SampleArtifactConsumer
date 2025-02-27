@@ -1,3 +1,5 @@
+import org.apache.tools.ant.util.JavaEnvUtils.VERSION_11
+
 plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.android)
@@ -10,7 +12,7 @@ android {
 
   defaultConfig {
     applicationId = "com.mdc.android.poc.SampleArtifactConsumer"
-    minSdk = 35
+    minSdk = 34
     targetSdk = 35
     versionCode = 1
     versionName = "1.0"
@@ -24,16 +26,21 @@ android {
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
   }
+
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
   }
+
   kotlinOptions {
     jvmTarget = "11"
   }
+
   buildFeatures {
     compose = true
   }
+
+  buildToolsVersion = "35"
 }
 
 dependencies {
@@ -46,16 +53,12 @@ dependencies {
   implementation(libs.androidx.ui.graphics)
   implementation(libs.androidx.ui.tooling.preview)
   implementation(libs.androidx.material3)
+  implementation("androidx.compose.material:material:1.4.8")
+  implementation("com.google.android.material:material:1.11.0")// Use the latest version
+  implementation("androidx.appcompat:appcompat:1.4.0")
 
-  implementation("com.local.pscore:core:0.0.1")
-  implementation("com.local.pscore:tasks:0.0.2")
-  implementation("com.local.pscore:search:0.0.1")
+  implementation("com.motorolasolutions.android.poc.artifact:core:0.0.4")
+  implementation("com.motorolasolutions.android.poc.artifact:tasks:0.0.3")
+  implementation("com.motorolasolutions.android.poc.artifact:search:0.0.4")
 
-  testImplementation(libs.junit)
-  androidTestImplementation(libs.androidx.junit)
-  androidTestImplementation(libs.androidx.espresso.core)
-  androidTestImplementation(platform(libs.androidx.compose.bom))
-  androidTestImplementation(libs.androidx.ui.test.junit4)
-  debugImplementation(libs.androidx.ui.tooling)
-  debugImplementation(libs.androidx.ui.test.manifest)
 }
